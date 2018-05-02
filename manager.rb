@@ -1,6 +1,6 @@
 class Employee
  attr_reader :first_name, :last_name, :salary, :active
- attr_writer :first_name
+ attr_writer :first_name, :active
 
  def initialize(input_options) 
   @first_name = input_options [:first_name]
@@ -16,42 +16,32 @@ class Employee
   def give_annual_raise
     @salary = 1.05 * @salary
   end
-
-  def fire_employee
-    @active = false
-  end
 end
 
 class Manager < Employee
+  attr_reader :employees
   def initialize(input_options)
     super(input_options)
     @employees = input_options[:employees]
   end
 
   def give_all_raises
-    index = 0
-    @employees.length.times do 
-      @employees[index].give_annual_raise
-      index = index + 1 
+    employees.each do |employee| 
+      employee.give_annual_raise
     end  
   end
 
   def fire_all_employees
-    index = 0
-    @employees.length.times do
-      @employees[index].fire_employee
-      index = index + 1
+    employees.each do |employee|
+      employee.active = false
     end
   end
 
   def send_report
     puts "Sending Email..."
-    #code to send email
     puts "Email sent."
   end
 end
-
-# runner code aka driver code
 
 employee_1 = Employee.new(
                           first_name: "Tim", 
@@ -76,4 +66,4 @@ manager = Manager.new(
                       )
 
 manager.fire_all_employees
-p employee_2
+p manager.employees
