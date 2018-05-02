@@ -9,7 +9,6 @@ class Employee
   @active = input_options [:active]
  end
 
-
   def print_info
     puts "#{@first_name} #{@last_name} makes #{@salary} a year"
   end
@@ -18,6 +17,21 @@ class Employee
     @salary = 1.05 * @salary
   end
 end
+
+class Manager < Employee
+  def initialize(input_options)
+    super(input_options)
+    @employees = input_options[:employees]
+  end
+
+  def send_report
+    puts "Sending Email..."
+    #code to send email
+    puts "Email sent."
+  end
+end
+
+# runner code aka driver code
 
 employee_1 = Employee.new(
                           first_name: "Tim", 
@@ -33,5 +47,12 @@ employee_2 = Employee.new(
                           active: true
                           )
 
-employee_1.print_info
-employee_2.print_info
+manager = Manager.new(
+                      first_name: "Betty",
+                      last_name: "Crocker",
+                      salary: 100000,
+                      active: true,
+                      employees: [employee_1, employee_2]
+                      )
+
+p manager

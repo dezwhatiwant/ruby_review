@@ -15,3 +15,5 @@ name_and_color << [name_of_fruit[1]] + [color_of_fruit[1]]
 name_and_color << [name_of_fruit[2]] + [color_of_fruit[2]]
 
 p name_and_color.to_h
+
+p name_of_fruit
