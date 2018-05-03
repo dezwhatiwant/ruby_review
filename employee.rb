@@ -18,20 +18,3 @@ class Employee
     @salary = 1.05 * @salary
   end
 end
-
-employee_1 = Employee.new(
-                          first_name: "Tim", 
-                          last_name: "Taylor", 
-                          salary: 70000,
-                          active: true
-                          )
-
-employee_2 = Employee.new(
-                          first_name: "Walt",
-                          last_name: "Kronk",
-                          salary: 80000,
-                          active: true
-                          )
-
-employee_1.print_info
-employee_2.print_info
